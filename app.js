@@ -3,8 +3,11 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const https = require('https');
 const { type } = require('os');
+require('dotenv').config();
 
 const app = express();
+const apiKey = process.env.API_KEY;
+const listId = process.env.LIST_ID;
 
 // Middleware to parse URL-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,12 +45,12 @@ app.post('/', (req, res) => {
     const jsonData = JSON.stringify(data);
 
     // Mailchimp API URL
-    const url = 'https://us13.api.mailchimp.com/3.0/lists/98fa893eee';
+    const url = `https://us13.api.mailchimp.com/3.0/lists/${listId}`;
 
     // Options for the HTTPS request
     const options = {
         method: 'POST',
-        auth: 'talha:4b5e404fb338e11c43da0eab881d01f3-us13'
+        auth: `talha:${apiKey}`
     };
 
     // Send data to Mailchimp
@@ -70,11 +73,8 @@ app.post('/', (req, res) => {
     request.end();
 });
 
-// Start the server on port 3000
-app.listen(process.env.PORT || 3000, () => {
-    console.log('Server is running on port 3000');
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
-
-// API Key for Mailchimp: 4b5e404fb338e11c43da0eab881d01f3-us13
-
-// List/Audience ID: 98fa893eee

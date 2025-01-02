@@ -4,13 +4,14 @@
   "description": "A newsletter sign up page where user can enter their e-mail address and server collects that.",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Md. Talha Hossain",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.3",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "request": "^2.88.2"
   }
