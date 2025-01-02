@@ -58,7 +58,7 @@ app.post('/', (req, res) => {
         // Listen for data event to handle the response
         response.on('data', (data) => {
             // Parse the received data from JSON and log it
-            console.log(JSON.parse(data));
+            // console.log(JSON.parse(data));
         });
         // Check the response status code to determine success or failure
         if (response.statusCode === 200) {
